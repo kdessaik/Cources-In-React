@@ -3,7 +3,7 @@ import { Counter } from "./Counter.js";
 import{Counter1} from "./NavBar/Namedisplay"
 import UsePreferencedHook from "./user/Userpropriete"
 
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { ListJsx } from "./list/List"
 import {Navbar } from "./NavBar/Navbar";
 
@@ -41,34 +41,52 @@ const App = () => {
   const handleData = () => {
     return (event) => {setData(event.target.value)}
   }
-  const [inputValue,UpdateValue]=useState('')
+  const [inputValue,UpdateValue]=useState(localStorage.getItem('search') || '')
+  //useEffect
+  useEffect(() => {
+    localStorage.setItem('search', inputValue)
+  }, [inputValue])
   const KeepUpdateValue=()=>{
     return (e)=>{ UpdateValue(e.target.value)}
   }
+  const SearchTitle=list.filter((storyValue)=>{ return storyValue.title.toLocaleLowerCase().includes(inputValue.toLocaleLowerCase())})
+  
   
 console.log(inputValue)
   return (
      <>
+     <h1>My course in React</h1>
+     <h4>A NavBar</h4>
   <Navbar/>
+  <h4>A Counter</h4>
   <Counter1/>
+  <h4>A Use of useState</h4>
   <UsePreferencedHook
     type='text'
     placeholder='Enter your Text'
     value={data}
     onChange={handleData()}
     />
-      <p>{data}</p>
+      <h4>Display a List </h4>
       <ListJsx/>
-      <Counter/>
-      <ListWithKeys/>
-      <SearchWithProps/>
-      <ListWithKeys1 
-       
-       onChange={KeepUpdateValue()}
-       value={inputValue}
-       />
+      <p>{data}</p>
+      <hr />
+      <h4>A Counter again</h4>
+      <Counter/><hr />
+      <h4>List Keys</h4>
+      <ListWithKeys/><hr />
+      <h4>Search Element</h4>
+      <SearchWithProps
+      value={inputValue}
+      onChange={KeepUpdateValue()}
 
-       <p>{inputValue} dessai</p>
+      /><hr />
+      <ListWithKeys1
+      list={SearchTitle}
+      />
+      
+
+       
 
 
       </>
