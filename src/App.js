@@ -51,13 +51,16 @@ const App = () => {
   }
   const SearchTitle=list.filter((storyValue)=>{ return storyValue.title.toLocaleLowerCase().includes(inputValue.toLocaleLowerCase())})
   
+  //NavBar Function
   
-console.log(inputValue)
   return (
      <>
      <h1>My course in React</h1>
      <h4>A NavBar</h4>
   <Navbar/>
+  <p></p>
+
+
   <h4>A Counter</h4>
   <Counter1/>
   <h4>A Use of useState</h4>

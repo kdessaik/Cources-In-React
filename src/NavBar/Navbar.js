@@ -1,6 +1,6 @@
-export  function Navbar() {
+export  function Navbar({function1,function2,function3,function4}) {
   
-
+function1=()=>{return console.log('Dessai Kibeho')}
     return (
         
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -13,16 +13,16 @@ export  function Navbar() {
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav">
         <li className="nav-item active">
-          <a className="nav-link" href="#">Home1 <span class="sr-only">(current)</span></a>
+          <a className="nav-link" href="#" onClick={function1()}>Home</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">About</a>
+          <a className="nav-link" href="#" onClick={function2}>About</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Contacts</a>
+          <a className="nav-link" href="#"onClick={function3}>Contacts</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link disabled" href="#">What we do</a>
+          <a className="nav-link disabled" onClick={function4} href="#">What we do</a>
         </li>
       </ul>
     </div>
