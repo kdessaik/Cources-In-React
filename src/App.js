@@ -10,6 +10,7 @@ import {Navbar } from "./NavBar/Navbar";
 import SearchWithProps from"./state/LiftingState";
 import ListWithKeys from './list/List'
 import ListWithKeys1 from "./list/ListWithKeys"
+import CustomLocalStorage from './CustomLocalStorage/CusstomLocalStorage';
 
 
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
     
   ];
 
+
   const [data, setData] = useState('')
   
   
@@ -49,9 +51,12 @@ const App = () => {
   const KeepUpdateValue=()=>{
     return (e)=>{ UpdateValue(e.target.value)}
   }
+  //search Function
   const SearchTitle=list.filter((storyValue)=>{ return storyValue.title.toLocaleLowerCase().includes(inputValue.toLocaleLowerCase())})
   
   //NavBar Function
+
+  const [searchTerm, setSearchTerm] = CustomLocalStorage('search')
   
   return (
      <>
@@ -86,8 +91,14 @@ const App = () => {
       /><hr />
       <ListWithKeys1
       list={SearchTitle}
-      />
-      
+      /> <hr/>
+
+      <h1>How to export and import a localStorage</h1>
+
+      <h4>Search Element</h4>
+      <SearchWithProps
+      value={searchTerm}
+      onChange={()=>{return (e)=>{setSearchTerm(e.target.value)}}}/>
 
        
 
