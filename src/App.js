@@ -11,6 +11,7 @@ import SearchWithProps from"./state/LiftingState";
 import ListWithKeys from './list/List'
 import ListWithKeys1 from "./list/ListWithKeys"
 import CustomLocalStorage from './CustomLocalStorage/CusstomLocalStorage';
+import ReactForms from "./ReactForm/ReactForm"
 
 
 const App = () => {
@@ -99,6 +100,8 @@ const App = () => {
       <SearchWithProps
       value={searchTerm}
       onChange={()=>{return (e)=>{setSearchTerm(e.target.value)}}}/>
+      <h4>A react Forms</h4>
+      <ReactForms/>
 
        
 
