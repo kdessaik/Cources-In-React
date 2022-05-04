@@ -12,6 +12,8 @@ import ListWithKeys from './list/List'
 import ListWithKeys1 from "./list/ListWithKeys"
 import CustomLocalStorage from './CustomLocalStorage/CusstomLocalStorage';
 import ReactForms from "./ReactForm/ReactForm"
+import ReactFormsMultiple from './ReactForm/ReactMultipleInputs';
+import ReactSelectInput from './Selector/SelecteItemsReact'
 
 
 const App = () => {
@@ -102,6 +104,11 @@ const App = () => {
       onChange={()=>{return (e)=>{setSearchTerm(e.target.value)}}}/>
       <h4>A react Forms</h4>
       <ReactForms/>
+      <br/>
+      <ReactFormsMultiple/>
+      <h4>Selector in react</h4>
+      
+      <ReactSelectInput/>
 
        
 
