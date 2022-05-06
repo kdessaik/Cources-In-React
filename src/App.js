@@ -5,7 +5,7 @@ import UsePreferencedHook from "./user/Userpropriete"
 
 import { useState,useEffect } from "react";
 import { ListJsx } from "./list/List"
-import {Navbar } from "./NavBar/Navbar";
+import Navbar from "./NavBar/Navbar";
 
 import SearchWithProps from"./state/LiftingState";
 import ListWithKeys from './list/List'
@@ -14,7 +14,11 @@ import CustomLocalStorage from './CustomLocalStorage/CusstomLocalStorage';
 import ReactForms from "./ReactForm/ReactForm"
 import ReactFormsMultiple from './ReactForm/ReactMultipleInputs';
 import ReactSelectInput from './Selector/SelecteItemsReact'
-
+import Home from "./NavBar/Home"
+import About from "./NavBar/About"
+import Contact from "./NavBar/Contact"
+import { BrowserRouter ,Route,Routes } from 'react-router-dom';
+import getAsyncDataStories from "./AssychroniseWithReact/AssychroniseData"
 
 const App = () => {
   const list = [
@@ -36,6 +40,7 @@ const App = () => {
     }
     
   ];
+
 
 
   const [data, setData] = useState('')
@@ -62,10 +67,27 @@ const App = () => {
   const [searchTerm, setSearchTerm] = CustomLocalStorage('search')
   
   return (
+    
      <>
      <h1>My course in React</h1>
+     <BrowserRouter>
      <h4>A NavBar</h4>
   <Navbar/>
+  <Routes>
+<Route path='/' key={3} component={Home}/>
+  
+  
+  <Route path='/about' key={2} component={About} />
+  
+  
+  <Route path="/contact" key={1} component={Contact}/>
+  
+  </Routes>
+  </BrowserRouter>
+
+  
+  
+  
   <p></p>
 
 
@@ -107,13 +129,15 @@ const App = () => {
       <br/>
       <ReactFormsMultiple/>
       <h4>Selector in react</h4>
-      
+
       <ReactSelectInput/>
+      <getAsyncDataStories/>
 
        
 
 
       </>
+      
       
 
    );

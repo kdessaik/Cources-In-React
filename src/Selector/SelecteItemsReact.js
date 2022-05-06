@@ -22,7 +22,7 @@ export default function ReactSelectInput() {
           <select
           type='text'
           id="country"
-          value='des'
+          
           
           >
           <option />
