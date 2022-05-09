@@ -21,7 +21,7 @@ import { BrowserRouter ,Route,Routes } from 'react-router-dom';
 import getAsyncDataStories from "./AssychroniseWithReact/AssychroniseData"
 
 const App = () => {
-  const list = [
+  const initialStories = [
     {
         title: 'Redux',
         url: 'https://redux.js.org/',
@@ -44,6 +44,9 @@ const App = () => {
 
 
   const [data, setData] = useState('')
+  const [stories,setStories] = useState([])
+  const [isLoading, setIsLoading] = useState(false);
+
   
   
 
@@ -60,11 +63,31 @@ const App = () => {
     return (e)=>{ UpdateValue(e.target.value)}
   }
   //search Function
-  const SearchTitle=list.filter((storyValue)=>{ return storyValue.title.toLocaleLowerCase().includes(inputValue.toLocaleLowerCase())})
+  const SearchTitle=stories.filter((storyValue)=>{ return storyValue.title.toLocaleLowerCase().includes(inputValue.toLocaleLowerCase())})
   
   //NavBar Function
 
   const [searchTerm, setSearchTerm] = CustomLocalStorage('search')
+
+  // useEffect(() => {
+  //   getAsyncDataStories(initialStories)
+  //   .then((result) => {
+  //     setStories(result.data.stories)
+  //   })
+  //   .catch((error) => {console.log(error)})
+  // }, [])
+  useEffect(() => {
+    //set the spinner loader
+    setIsLoading(true);
+    getAsyncDataStories(initialStories)
+    .then((result) => {
+      setStories(result.data.stories)
+      //stop spinner loader after data is rendered
+      setIsLoading(false)
+    })
+    //else catch error/exceptions
+    
+  }, [])
   
   return (
     
@@ -74,13 +97,13 @@ const App = () => {
      <h4>A NavBar</h4>
   <Navbar/>
   <Routes>
-<Route path='/' key={3} component={Home}/>
+<Route path='/' key={3} element={<Home/>}/>
   
   
-  <Route path='/about' key={2} component={About} />
+  <Route path='/about' key={2} element={<About/>} />
   
   
-  <Route path="/contact" key={1} component={Contact}/>
+  <Route path="/contact" key={1} element={<Contact/>}/>
   
   </Routes>
   </BrowserRouter>
@@ -114,9 +137,11 @@ const App = () => {
       onChange={KeepUpdateValue()}
 
       /><hr />
-      <ListWithKeys1
+      {isLoading ? (<p>loading.........</p>) : ( <ListWithKeys1
       list={SearchTitle}
-      /> <hr/>
+      />)
+      }
+       <hr/>
 
       <h1>How to export and import a localStorage</h1>
 
@@ -131,7 +156,7 @@ const App = () => {
       <h4>Selector in react</h4>
 
       <ReactSelectInput/>
-      <getAsyncDataStories/>
+     
 
        
 
