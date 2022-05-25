@@ -1,7 +1,7 @@
 import React from "react";
 const Home=()=>{
 
-    return <p>This is an Home Page</p>
+    return <p style={{color:'blue', fontSize:'70px'}}>Welcome all!!</p>
 }
 export default Home
 

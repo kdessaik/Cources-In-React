@@ -19,6 +19,10 @@ import About from "./NavBar/About"
 import Contact from "./NavBar/Contact"
 import { BrowserRouter ,Route,Routes } from 'react-router-dom';
 import getAsyncDataStories from "./AssychroniseWithReact/AssychroniseData"
+import RegisterComponent from "./Registration/Login"
+import Footer from "./Footer/Footer"
+import Registration from './Registration/Registration'
+import RegisterOrLogin from "./Registration/RegisterOrLogin"
 
 const App = () => {
   const initialStories = [
@@ -97,13 +101,13 @@ const App = () => {
      <h4>A NavBar</h4>
   <Navbar/>
   <Routes>
-<Route path='/' key={3} element={<Home/>}/>
+<Route path='/'  element={<Home/>}/>
   
   
-  <Route path='/about' key={2} element={<About/>} />
+  <Route path='/about'  element={<About/>} />
   
   
-  <Route path="/contact" key={1} element={<Contact/>}/>
+  <Route path="/contact"  element={<Contact/>}/>
   
   </Routes>
   </BrowserRouter>
@@ -155,7 +159,18 @@ const App = () => {
       <ReactFormsMultiple/>
       <h4>Selector in react</h4>
 
-      <ReactSelectInput/>
+      <ReactSelectInput/> <hr/> <br/>
+      <h4>Login In react</h4>
+      
+
+      <RegisterOrLogin/>
+      
+       <hr/><br/>
+
+      <h4>My Footer in React</h4>
+      <Footer/>
+
+
      
 
        
